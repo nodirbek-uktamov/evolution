@@ -35,7 +35,7 @@ export default function Main() {
                 </View>
 
                 <ScrollView showsHorizontalScrollIndicator={false}
-                    contentContainerStyle={{ paddingHorizontal: 22 }}
+                    contentContainerStyle={{ paddingHorizontal: 15 }}
                     style={styles.categories}
                     horizontal>
 
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     },
     academy: {
         marginTop: 15,
-        marginHorizontal: 10,
+        paddingHorizontal: 10,
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
