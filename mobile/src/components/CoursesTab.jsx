@@ -1,30 +1,35 @@
 import React from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
+import { useNavigation } from '@react-navigation/native'
 import { choiceLinear } from '../utils/colors'
 
 export default function CoursesTab({ item, style, index = 0, detail = false }) {
-    return (
-        <LinearGradient colors={choiceLinear(index)} style={[styles.tab, style]}>
-            <Text style={{ ...styles.tabName, fontSize: detail ? 22 : 18 }}>{item.attributes.name}</Text>
+    const navigation = useNavigation()
 
-            {detail ? (
-                <Text numberOfLines={4} style={{ ...styles.tabDescription, fontSize: detail ? 16 : 14 }}>
-                    {item.attributes.description}
-                </Text>
-            ) : null}
-        </LinearGradient>
+    function openDetails() {
+        navigation.navigate('CourseDetail', { course: item })
+    }
+
+    return (
+        <TouchableOpacity style={[styles.tab, style]} onPress={openDetails}>
+            <LinearGradient colors={choiceLinear(index)} style={{ flex: 1, width: '100%', padding: 18, borderRadius: 26 }}>
+                <Text style={{ ...styles.tabName, fontSize: detail ? 22 : 17 }}>{item.attributes.name}</Text>
+
+                {detail ? (
+                    <Text numberOfLines={4} style={{ ...styles.tabDescription, fontSize: detail ? 16 : 14 }}>
+                        {item.attributes.description}
+                    </Text>
+                ) : null}
+            </LinearGradient>
+        </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     tab: {
         minHeight: 150,
-        borderRadius: 26,
         width: '90%',
-        padding: 18,
-        marginHorizontal: 5,
-        paddingBottom: 10,
     },
     tabName: {
         color: 'white',

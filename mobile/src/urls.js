@@ -12,7 +12,7 @@
 // export const SAVE_ANSWER = '/tests/run/{hash}/save'
 // export const STOP_QUIZ = '/tests/run/{hash}/stop'
 
-export const COURSES_LIST = '/courses'
+export const COURSES_LIST = '/courses?populate=*'
 export const ACADEMIES_LIST = '/academies'
 
 export const CATEGORIES_LIST = '/categories'
