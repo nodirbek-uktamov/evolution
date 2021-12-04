@@ -8,9 +8,8 @@ export default function Jobs() {
     return (
         <View style={{ backgroundColor: '#121421', flex: 1 }}>
             <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-                <View style={{ marginBottom: 20 }}>
-                    {jobs.map((item) => <JobItem key={item.id} />)}
-                </View>
+                {jobs.map((item) => <JobItem key={item.id} />)}
+                <View style={{ height: 20 }} />
             </ScrollView>
         </View>
     )

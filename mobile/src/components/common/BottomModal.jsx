@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal, ScrollView, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 
-export default function BottomModal({ onDismiss, visible, children, stick = false, style = true }) {
+export default function BottomModal({ onDismiss, visible, children, stick = false, style = {} }) {
     return (
         <Modal
             animated

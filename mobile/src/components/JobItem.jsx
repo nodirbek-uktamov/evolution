@@ -66,7 +66,7 @@ export default function JobItem({ index }) {
         <TouchableOpacity onPress={() => setIsModalOpened(true)} style={styles.itemContainer}>
             {isModalOpened ? (
                 <BottomModal stick onDismiss={() => setIsModalOpened(false)} style={{ backgroundColor: '#1b214d' }}>
-                    <View style={{ paddingVertical: 10, paddingHorizontal: 35 }}>
+                    <View style={{ paddingVertical: 10, paddingHorizontal: 20 }}>
                         <Content />
 
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }} onPress={() => Linking.openURL('mailto:testemail@gmail.com')}>
@@ -79,6 +79,7 @@ export default function JobItem({ index }) {
                             <Text style={{ color: '#209cee', fontSize: 17 }}>@unde_fined</Text>
                         </TouchableOpacity>
                     </View>
+                    <View style={{ height: 20 }} />
                 </BottomModal>
             ) : null}
 

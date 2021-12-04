@@ -27,18 +27,18 @@ export default function OrderItem({ index }) {
     return (
         <View>
             {isModalOpened ? (
-                <BottomModal visible={isModalOpened} onDismiss={() => setIsModalOpened(false)}>
-                    <View style={{ paddingHorizontal: 20 }}>
+                <BottomModal stick style={{ backgroundColor: '#1b214d' }} visible={isModalOpened} onDismiss={() => setIsModalOpened(false)}>
+                    <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
                         <Content />
 
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }} onPress={() => Linking.openURL('tel:+998901112233')}>
                             <Icon size={30} color="#34a853" name="call" style={{ width: 45 }} />
-                            <Text style={{ color: '#3173dc', fontSize: 17 }}>+998901112233</Text>
+                            <Text style={{ color: '#209cee', fontSize: 17 }}>+998901112233</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }} onPress={() => Linking.openURL('https://t.me/unde_fined')}>
                             <Icon size={30} color="#0182c2" name="send" style={{ width: 45 }} />
-                            <Text style={{ color: '#3173dc', fontSize: 17 }}>@unde_fined</Text>
+                            <Text style={{ color: '#209cee', fontSize: 17 }}>@unde_fined</Text>
                         </TouchableOpacity>
                     </View>
                 </BottomModal>

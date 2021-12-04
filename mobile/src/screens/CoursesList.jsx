@@ -24,9 +24,9 @@ export default function AcademiesList() {
 
                 {courses.loading ? <Loader size={50} style={{ marginTop: 80 }} color="#fff" /> : null}
 
-                <View style={[styles.course, { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }]}>
+                <View style={[styles.course, { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', paddingBottom: 30 }]}>
                     {courses.response ? courses.response.data.map((item, index) => (
-                        <View style={{ marginBottom: 20 }} key={item.id}><CoursesTab index={index} item={item} /></View>
+                        <View style={{ marginBottom: 20, marginHorizontal: 20, width: '100%', alignItems: 'center' }} key={item.id}><CoursesTab detail style={{ }} index={index} item={item} /></View>
                     )) : null}
                 </View>
             </ScrollView>
