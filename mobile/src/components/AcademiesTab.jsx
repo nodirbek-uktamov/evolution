@@ -1,14 +1,19 @@
 import React from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
+import { useNavigation } from '@react-navigation/native'
 import { choiceLinear } from '../utils/colors'
 
-export default function AcademiesTab({ item, style, index }) {
+export default function AcademiesTab({ item, style, index, reversed, academy = false }) {
+    const navigation = useNavigation()
+
     return (
-        <LinearGradient colors={choiceLinear(index, true)} style={[styles.tab, style]}>
-            <Text style={styles.tabName}>{item.attributes.name}</Text>
-            <Text numberOfLines={3} style={styles.tabDescription}>{item.attributes.description}</Text>
-        </LinearGradient>
+        <TouchableOpacity style={{ width: 305, marginHorizontal: 5 }} onPress={() => navigation.navigate(academy ? 'AcademyDetail' : 'CourseDetail', { item })}>
+            <LinearGradient colors={choiceLinear(index, reversed)} style={[styles.tab, style]}>
+                <Text style={styles.tabName}>{item.attributes.name}</Text>
+                <Text numberOfLines={3} style={styles.tabDescription}>{item.attributes.description}</Text>
+            </LinearGradient>
+        </TouchableOpacity>
     )
 }
 
@@ -17,8 +22,7 @@ const styles = StyleSheet.create({
         width: 305,
         borderRadius: 26,
         padding: 24,
-        marginHorizontal: 5,
-        justifyContent: 'space-between',
+        flex: 1,
     },
     tabName: {
         color: 'white',
@@ -27,7 +31,7 @@ const styles = StyleSheet.create({
     },
     tabDescription: {
         color: '#efefef',
-        marginTop: 2,
+        marginTop: 7,
         fontSize: 18,
     },
     tabPrice: {

@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import AcademiesTab from '../components/AcademiesTab'
 import { useLoad } from '../hooks/request'
-import { CATEGORIES_COURSES_LIST, CATEGORIES_LIST, COURSES_LIST } from '../urls'
+import { ACADEMIES_LIST, CATEGORIES_COURSES_LIST, CATEGORIES_LIST, COURSES_LIST } from '../urls'
 import CoursesTab from '../components/CoursesTab'
 import Loader from '../components/common/Loader'
 import Header from '../components/Header'
@@ -15,11 +15,12 @@ export default function Main() {
     const navigation = useNavigation()
     const courses = useLoad({ url: COURSES_LIST })
     const categories = useLoad({ url: CATEGORIES_LIST })
-    const academies = useLoad({ url: CATEGORIES_COURSES_LIST.replace('{id}', selected) })
+    const categoryCourses = useLoad({ url: CATEGORIES_COURSES_LIST.replace('{id}', selected) })
+    const academies = useLoad({ url: ACADEMIES_LIST })
 
     useEffect(() => {
-        academies.setResponse(null)
-        academies.request()
+        categoryCourses.setResponse(null)
+        categoryCourses.request()
         // eslint-disable-next-line
     }, [selected])
 
@@ -50,9 +51,29 @@ export default function Main() {
                     )) : null}
                 </ScrollView>
 
-                {academies.loading || courses.loading
+                {categoryCourses.loading || courses.loading
                     ? <Loader size={50} style={{ marginTop: 80 }} color="#fff" />
                     : null}
+
+                {categoryCourses.response ? (
+                    <Fragment>
+                        <View style={[styles.recommendedDescription, styles.container]}>
+                            <Text style={styles.recommendedText}>Курсы по категориям</Text>
+
+                            <TouchableOpacity onPress={() => navigation.navigate('CoursesList')}>
+                                <Text style={styles.seeAll}>Все...</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <ScrollView
+                            showsHorizontalScrollIndicator={false}
+                            horizontal style={styles.academy}>
+                            {categoryCourses.response?.data?.attributes?.courses?.data.map((item, index) => (
+                                <AcademiesTab index={index} key={item.id} item={item} />
+                            ))}
+                        </ScrollView>
+                    </Fragment>
+                ) : null}
 
                 {academies.response ? (
                     <Fragment>
@@ -67,8 +88,8 @@ export default function Main() {
                         <ScrollView
                             showsHorizontalScrollIndicator={false}
                             horizontal style={styles.academy}>
-                            {academies.response.data.attributes.courses.data.map((item, index) => (
-                                <AcademiesTab index={index} key={item.id} item={item} />
+                            {academies.response?.data.map((item, index) => (
+                                <AcademiesTab reversed academy index={index} key={item.id} item={item} />
                             ))}
                         </ScrollView>
                     </Fragment>

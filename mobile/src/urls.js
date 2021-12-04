@@ -13,7 +13,9 @@
 // export const STOP_QUIZ = '/tests/run/{hash}/stop'
 
 export const COURSES_LIST = '/courses?populate=*'
-export const ACADEMIES_LIST = '/academies'
+export const ACADEMIES_LIST = '/academies/?populate=*'
+export const ACADEMY_DETAIL = '/academies/{id}/?populate=*'
+export const COURSE_DETAIL = '/courses/{id}/?populate=*'
 
 export const CATEGORIES_LIST = '/categories'
 export const CATEGORIES_COURSES_LIST = '/categories/{id}?populate=*'

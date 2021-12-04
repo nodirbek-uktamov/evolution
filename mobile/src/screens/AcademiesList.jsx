@@ -26,7 +26,7 @@ export default function AcademiesList() {
 
                 <View style={styles.academy}>
                     {academies.response ? academies.response.data.map((item, index) => (
-                        <View key={item.id} style={{ marginBottom: 20 }}><AcademiesTab style={{ width: '85%', height: 160 }} index={index} item={item} /></View>
+                        <View key={item.id} style={{ marginBottom: 20 }}><AcademiesTab academy style={{ width: '85%', height: 160 }} index={index} item={item} /></View>
                     )) : null}
                 </View>
             </ScrollView>

@@ -8,12 +8,12 @@ export default function CoursesTab({ item, style, index = 0, detail = false }) {
     const navigation = useNavigation()
 
     function openDetails() {
-        navigation.navigate('CourseDetail', { course: item })
+        navigation.navigate('CourseDetail', { item })
     }
 
     return (
         <TouchableOpacity style={[styles.tab, style]} onPress={openDetails}>
-            <LinearGradient colors={choiceLinear(index)} style={{ flex: 1, width: '100%', padding: 18, borderRadius: 26 }}>
+            <LinearGradient colors={choiceLinear(index, false, true)} style={{ flex: 1, width: '100%', padding: 18, borderRadius: 26 }}>
                 <Text style={{ ...styles.tabName, fontSize: detail ? 22 : 17 }}>{item.attributes.name}</Text>
 
                 {detail ? (

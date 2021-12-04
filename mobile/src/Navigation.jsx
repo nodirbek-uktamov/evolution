@@ -12,6 +12,7 @@ import AcademiesList from './screens/AcademiesList'
 import CoursesList from './screens/CoursesList'
 import Header from './components/Header'
 import CourseDetail from './screens/CourseDetail'
+import AcademyDetail from './screens/AcademyDetail'
 
 const Stack = createStackNavigator()
 const BottomTab = createBottomTabNavigator()
@@ -26,6 +27,7 @@ export default function Navigation() {
                 <Stack.Screen options={{ headerShown: false }} name="AcademiesList" component={AcademiesList} />
                 <Stack.Screen options={{ headerShown: false }} name="CoursesList" component={CoursesList} />
                 <Stack.Screen options={{ headerShown: false }} name="CourseDetail" component={CourseDetail} />
+                <Stack.Screen options={{ headerShown: false }} name="AcademyDetail" component={AcademyDetail} />
             </Stack.Navigator>
         </NavigationContainer>
     )
