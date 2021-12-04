@@ -11,12 +11,21 @@ import Loader from '../components/common/Loader'
 import Header from '../components/Header'
 
 export default function Main() {
-    const [selecte, setSelecte] = useState(1)
+    const [selected, setSelected] = useState(1)
+    const navigation = useNavigation()
+    const courses = useLoad({ url: COURSES_LIST })
+    const categories = useLoad({ url: CATEGORIES_LIST })
+    const academies = useLoad({ url: CATEGORIES_COURSES_LIST.replace('{id}', selected) })
+
+    useEffect(() => {
+        academies.setResponse(null)
+        academies.request()
+        // eslint-disable-next-line
+    }, [selected])
 
     return (
         <View style={{ flex: 1, backgroundColor: '#121421' }}>
             <Header />
-            <Text>{selecte}</Text>
 
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
@@ -44,6 +53,46 @@ export default function Main() {
                 {academies.loading || courses.loading
                     ? <Loader size={50} style={{ marginTop: 80 }} color="#fff" />
                     : null}
+
+                {academies.response ? (
+                    <Fragment>
+                        <View style={[styles.recommendedDescription, styles.container]}>
+                            <Text style={styles.recommendedText}>Рекомендованные академии 🚀</Text>
+
+                            <TouchableOpacity onPress={() => navigation.navigate('AcademiesList')}>
+                                <Text style={styles.seeAll}>Все...</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <ScrollView
+                            showsHorizontalScrollIndicator={false}
+                            horizontal style={styles.academy}>
+                            {academies.response.data.attributes.courses.data.map((item, index) => (
+                                <AcademiesTab index={index} key={item.id} item={item} />
+                            ))}
+                        </ScrollView>
+                    </Fragment>
+                ) : null}
+
+                {courses.response ? (
+                    <Fragment>
+                        <View style={[styles.recommendedDescription, styles.container]}>
+                            <Text style={styles.recommendedText}>Рекомендованные курсы 🚀</Text>
+
+                            <TouchableOpacity onPress={() => navigation.navigate('CoursesList')}>
+                                <Text style={styles.seeAll}>Все...</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.academy}>
+                            {courses.response.data.map((item, index) => (
+                                <View style={{ marginBottom: 20, width: '50%', alignItems: 'center' }} key={item.id}>
+                                    <CoursesTab index={index} item={item} />
+                                </View>
+                            ))}
+                        </View>
+                    </Fragment>
+                ) : null}
             </ScrollView>
         </View>
     )
