@@ -43,10 +43,10 @@ const styles = StyleSheet.create({
     course: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: 10,
     },
     title: {
-        marginTop: 20,
+        marginTop: 10,
         fontWeight: 'bold',
         color: 'white',
         fontSize: 30,
