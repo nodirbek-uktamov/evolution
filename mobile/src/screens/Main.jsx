@@ -16,6 +16,7 @@ export default function Main() {
     return (
         <View style={{ flex: 1, backgroundColor: '#121421' }}>
             <Header />
+            <Text>{selecte}</Text>
 
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
