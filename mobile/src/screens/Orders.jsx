@@ -27,7 +27,7 @@ export default function Orders() {
                     }} />
                 </BottomModal>
             ) : null}
-            qz
+
             <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
                 {ordersList.map((item) => <OrderItem item={item.attributes} key={item.id} />)}
                 <View style={{ height: 20 }} />
