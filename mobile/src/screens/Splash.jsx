@@ -30,7 +30,7 @@ export default function Splash() {
         {
             id: 0,
             title: 'Добро пожаловать в',
-            logo: <Text style={{ color: '#209cee', fontSize: 40, fontWeight: 'bold' }}>Evolution</Text>,
+            logo: <Text style={{ color: '#209cee', fontSize: 40, fontWeight: 'bold', marginTop: -7 }}>Evolution</Text>,
             image: kiteImage,
         },
         {
