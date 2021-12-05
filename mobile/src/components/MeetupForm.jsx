@@ -6,7 +6,8 @@ import { MEETUPS_LIST } from '../urls'
 
 export default function MeetupForm({ region, meetupsRequest, setShown }) {
     const { latitude, longitude } = region
-    const meetup = usePostRequest()
+    const meetup = usePostRequest({ url: MEETUPS_LIST })
+
     return (
         <Formik
             initialValues={
@@ -21,7 +22,7 @@ export default function MeetupForm({ region, meetupsRequest, setShown }) {
                 }
             }
             onSubmit={async (values) => {
-                const { success, response, error } = await meetup.request({ url: MEETUPS_LIST, data: { data: { ...values } } })
+                const { success, response, error } = await meetup.request({ data: { data: { ...values } } })
                 if (success) {
                     meetupsRequest()
                     setShown(false)

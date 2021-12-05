@@ -18,7 +18,7 @@ export default function Button({
 }) {
     const textStyles = {
         ...styles.text,
-        fontSize: little ? 14 : 18,
+        fontSize: little ? 14 : 22,
         color: outlined ? color : '#fff',
         marginHorizontal: little ? 10 : 15,
         ...textStyle,
