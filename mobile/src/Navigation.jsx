@@ -23,6 +23,8 @@ const BottomTab = createBottomTabNavigator()
 const TopTab = createMaterialTopTabNavigator()
 
 export default function Navigation() {
+    console.disableYellowBox = true
+
     return (
         <NavigationContainer>
             <Stack.Navigator>
