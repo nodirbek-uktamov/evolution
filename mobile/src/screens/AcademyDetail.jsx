@@ -16,8 +16,6 @@ export default function AcademyDetail({ route }) {
 
     return (
         <View style={{ backgroundColor: '#121421', flex: 1 }}>
-            <StatusBar />
-
             {detail.loading ? <Loader color="white" size={50} style={{ marginTop: 80 }} /> : (
                 <View>
                     <Image source={{ uri: academy.attributes.image }} style={{ width: '100%', height: 200 }} />

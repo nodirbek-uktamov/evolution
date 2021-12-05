@@ -10,8 +10,6 @@ export default function MentorDetail({ route }) {
 
     return (
         <ScrollView style={{ backgroundColor: '#121421', flex: 1 }}>
-            <StatusBar />
-
             <View>
                 <Image source={{ uri: item.bgImage }} style={{ width: '100%', height: 200 }} />
                 <Image source={{ uri: item.image }} style={styles.image} />

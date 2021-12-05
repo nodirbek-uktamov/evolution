@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { StyleSheet } from 'react-native'
+import { StatusBar, StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -15,6 +15,7 @@ import Map from './screens/Map'
 import CourseDetail from './screens/CourseDetail'
 import AcademyDetail from './screens/AcademyDetail'
 import MentorDetail from './screens/MentorDetail'
+import Splash from './screens/Splash'
 
 const Stack = createStackNavigator()
 const BottomTab = createBottomTabNavigator()
@@ -25,6 +26,7 @@ export default function Navigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen options={{ headerShown: false }} name="Splash" component={Splash} />
                 <Stack.Screen options={{ headerShown: false }} name="BottomTabs" component={BottomTabs} />
                 <Stack.Screen options={{ headerShown: false }} name="AcademiesList" component={AcademiesList} />
                 <Stack.Screen options={{ headerShown: false }} name="CoursesList" component={CoursesList} />

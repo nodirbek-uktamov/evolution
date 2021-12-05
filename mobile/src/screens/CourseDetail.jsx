@@ -20,8 +20,6 @@ export default function CourseDetail({ route }) {
 
     return (
         <ScrollView style={{ backgroundColor: '#121421', flex: 1 }}>
-            <StatusBar />
-
             <View>
                 <Image source={{ uri: course.attributes.image }} style={{ width: '100%', height: 200 }} />
 
