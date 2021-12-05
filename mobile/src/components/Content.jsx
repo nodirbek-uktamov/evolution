@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { Image, Text, StyleSheet, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-export default function Content({ item, width, margin }) {
+export default function Content({ item, width, margin, selectedCategories, setSelectedCategories }) {
     const { categories } = item
-    const [selectedCategories, setSelectedCategories] = useState([])
 
     function onPress(id) {
         if (selectedCategories.includes(id)) {

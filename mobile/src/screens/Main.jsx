@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     },
     recommendedText: {
         color: '#efefef',
-        fontSize: 18,
+        fontSize: 17,
     },
     academy: {
         marginTop: 15,

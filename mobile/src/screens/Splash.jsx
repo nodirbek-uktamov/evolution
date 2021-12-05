@@ -18,6 +18,7 @@ const { width, height } = Dimensions.get('window')
 
 export default function Splash() {
     const scrollRef = useRef()
+    const [selectedCategories, setSelectedCategories] = useState([])
 
     const { navigate } = useNavigation()
     const [screen, setScreen] = useState(0)
@@ -35,24 +36,30 @@ export default function Splash() {
         },
         {
             id: 1,
-            title: 'Узнайте своё текущее состояние по 8 сферам',
-            subTitle: 'Пройдите в течение 10-15 минут авторскую диагностику Growy Me и получите рекомендации по улучшению',
+            title: 'Находи полезные знакомства',
+            subTitle: 'Встречаясь на митапах с профессионалами которые можно найти на карте',
             image: lupImage,
         },
         {
             id: 2,
-            title: 'Уверенно развивайтесь и продвигайтесь вперёд',
-            subTitle: 'Используйте развивающие материалы Growy Me и уникальный инструмент Автокоучинг, который помогает увеличить ясность, мотивацию и осознанность в достижении целей.',
+            title: 'Зарабатывай',
+            subTitle: 'Выполняя заказы в фаст-дашорде.',
             image: rocketImage,
         },
         {
             id: 3,
-            title: 'Вдохновляйтесь промежуточными успехами',
-            subTitle: 'Дорожная карта по достижению цели поможет вам видеть ваш прогресс — сколько вы уже прошли и сколько осталось до конца пути',
+            title: 'Прокачивай скиллы',
+            subTitle: 'Проходя рекомендованные онлайн и оффлайн курсы по категорим которые выбрали',
             image: calendarImage,
         },
         {
             id: 4,
+            title: 'Находи работу',
+            subTitle: 'С помощью вакансий от реальных компаний',
+            image: rocketImage,
+        },
+        {
+            id: 5,
             title: 'Что тебе интересно?',
             image: speakerImage,
             categories: categories.response?.data,
@@ -85,7 +92,7 @@ export default function Splash() {
                     onScroll={onScroll}
                     scrollEventThrottle={300}>
                     {data.map((item) => (
-                        <Content key={item.id} width={blockWidth} margin={marginWidth} item={item} />
+                        <Content setSelectedCategories={setSelectedCategories} selectedCategories={selectedCategories} key={item.id} width={blockWidth} margin={marginWidth} item={item} />
                     ))}
                 </ScrollView>
             </View>
@@ -103,7 +110,7 @@ export default function Splash() {
                 </View>
 
                 <View style={styles.pagination}>
-                    {screen !== 4 ? (
+                    {screen !== 5 ? (
                         <TouchableOpacity style={styles.button} onPress={handleNext} activeOpacity={0.7}>
                             <Next />
                         </TouchableOpacity>
@@ -112,7 +119,7 @@ export default function Splash() {
                             style={styles.blueButton}
                             activeOpacity={0.7}
                             onPress={() => navigate('BottomTabs')}>
-                            <Text style={styles.buttonText}>Приступить</Text>
+                            <Text style={styles.buttonText}>{selectedCategories.length === 0 ? 'Пропустить' : 'Приступить'}</Text>
                         </TouchableOpacity>
                     )}
                 </View>
@@ -144,5 +151,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 16,
     },
-    buttonText: { color: 'white', fontSize: 18 },
+    buttonText: { color: 'white', fontSize: 18, fontWeight: '600' },
 })
