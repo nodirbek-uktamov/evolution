@@ -14,6 +14,7 @@ import Header from './components/Header'
 import Map from './screens/Map'
 import CourseDetail from './screens/CourseDetail'
 import AcademyDetail from './screens/AcademyDetail'
+import MentorDetail from './screens/MentorDetail'
 
 const Stack = createStackNavigator()
 const BottomTab = createBottomTabNavigator()
@@ -29,6 +30,7 @@ export default function Navigation() {
                 <Stack.Screen options={{ headerShown: false }} name="CoursesList" component={CoursesList} />
                 <Stack.Screen options={{ headerShown: false }} name="CourseDetail" component={CourseDetail} />
                 <Stack.Screen options={{ headerShown: false }} name="AcademyDetail" component={AcademyDetail} />
+                <Stack.Screen options={{ headerShown: false }} name="MentorDetail" component={MentorDetail} />
             </Stack.Navigator>
         </NavigationContainer>
     )

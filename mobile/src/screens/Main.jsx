@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, Image } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import AcademiesTab from '../components/AcademiesTab'
 import { useLoad } from '../hooks/request'
-import { ACADEMIES_LIST, CATEGORIES_COURSES_LIST, CATEGORIES_LIST, COURSES_LIST } from '../urls'
+import { ACADEMIES_LIST, CATEGORIES_COURSES_LIST, CATEGORIES_LIST, COURSES_LIST, MENTORS_LIST } from '../urls'
 import CoursesTab from '../components/CoursesTab'
 import Loader from '../components/common/Loader'
 import Header from '../components/Header'
@@ -17,6 +17,7 @@ export default function Main() {
     const categories = useLoad({ url: CATEGORIES_LIST })
     const categoryCourses = useLoad({ url: CATEGORIES_COURSES_LIST.replace('{id}', selected) })
     const academies = useLoad({ url: ACADEMIES_LIST })
+    const mentors = useLoad({ url: MENTORS_LIST })
 
     useEffect(() => {
         categoryCourses.setResponse(null)
@@ -35,6 +36,22 @@ export default function Main() {
                     <View style={styles.line} />
                 </View>
 
+                {mentors.response ? (
+                    <View style={styles.container}>
+                        <Text style={styles.recommendedText}>Менторы</Text>
+
+                        <View style={{ marginBottom: 20, marginTop: 10, flexDirection: 'row' }}>
+                            {mentors.response?.data.map((item) => (
+                                <TouchableOpacity
+                                    onPress={() => navigation.navigate('MentorDetail', { item: item.attributes })}>
+                                    <Image source={{ uri: item.attributes.image }}
+                                        style={{ width: 70, height: 70, marginRight: 15, borderRadius: 1000 }} />
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    </View>
+                ) : null}
+
                 <ScrollView showsHorizontalScrollIndicator={false}
                     contentContainerStyle={{ paddingHorizontal: 15 }}
                     style={styles.categories}
@@ -51,13 +68,11 @@ export default function Main() {
                     )) : null}
                 </ScrollView>
 
-                {categoryCourses.loading || courses.loading
-                    ? (
-                        <View style={{ height: 200, alignItems: 'center', justifyContent: 'center' }}>
-                            <Loader size={50} color="#fff" />
-                        </View>
-                    )
-                    : null}
+                {categoryCourses.loading || courses.loading || mentors.loading ? (
+                    <View style={{ height: 200, alignItems: 'center', justifyContent: 'center' }}>
+                        <Loader size={50} color="#fff" />
+                    </View>
+                ) : null}
 
                 {categoryCourses.response ? (
                     <Fragment>
