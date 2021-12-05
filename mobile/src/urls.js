@@ -20,6 +20,8 @@ export const COURSE_DETAIL = '/courses/{id}/?populate=*'
 export const CATEGORIES_LIST = '/categories'
 export const CATEGORIES_COURSES_LIST = '/categories/{id}?populate=*'
 
+export const MEETUPS_LIST = '/meetups'
+
 export const LANGUAGES_COURSES_LIST = '/categories/1?populate=*'
 export const PROGRAMMING_COURSES_LIST = '/categories/2?populate=*'
 export const DESIGN_COURSES_LIST = '/categories/3?populate=*'

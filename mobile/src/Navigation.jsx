@@ -11,6 +11,7 @@ import Orders from './screens/Orders'
 import AcademiesList from './screens/AcademiesList'
 import CoursesList from './screens/CoursesList'
 import Header from './components/Header'
+import Map from './screens/Map'
 import CourseDetail from './screens/CourseDetail'
 import AcademyDetail from './screens/AcademyDetail'
 
@@ -55,7 +56,17 @@ function BottomTabs() {
 
             <BottomTab.Screen options={{
                 headerShown: false,
-                title: 'Образование',
+                title: 'Карта',
+                tabBarLabelStyle: { color },
+                tabBarIcon: ({ focused }) => (
+                    <Icon size={30} color={color}
+                        name={focused ? 'map' : 'map-outline'} />
+                ),
+            }} name="Map" component={Map} />
+
+            <BottomTab.Screen options={{
+                headerShown: false,
+                title: 'Работа',
                 tabBarLabelStyle: { color },
                 tabBarIcon: ({ focused }) => (
                     <Icon size={30} color={color}

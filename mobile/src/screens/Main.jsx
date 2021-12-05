@@ -52,7 +52,11 @@ export default function Main() {
                 </ScrollView>
 
                 {categoryCourses.loading || courses.loading
-                    ? <Loader size={50} style={{ marginTop: 80 }} color="#fff" />
+                    ? (
+                        <View style={{ height: 200, alignItems: 'center', justifyContent: 'center' }}>
+                            <Loader size={50} color="#fff" />
+                        </View>
+                    )
                     : null}
 
                 {categoryCourses.response ? (
