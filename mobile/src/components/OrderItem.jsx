@@ -4,21 +4,17 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { defaultStyles } from '../static/styles'
 import BottomModal from './common/BottomModal'
 
-export default function OrderItem({ index }) {
+export default function OrderItem({ item }) {
     const [isModalOpened, setIsModalOpened] = useState(false)
 
     function Content() {
         return (
             <Fragment>
-                <Text style={styles.jobName}>React App</Text>
-                <Text style={{ flex: 0, fontSize: 15, color: '#209cee', marginBottom: 8 }}>10 000 $</Text>
+                <Text style={styles.jobName}>{item.name}</Text>
+                <Text style={{ flex: 0, fontSize: 15, color: '#209cee', marginBottom: 8 }}>{item.price} $</Text>
 
                 <Text style={{ marginBottom: 10, fontSize: 15, color: '#fff' }}>
-                    Lorem Ipsum sit dolor333
-                    Lorem Ipsum sit dolor333
-                    Lorem Ipsum sit dolor333
-                    Lorem Ipsum sit dolor333
-                    Lorem Ipsum sit dolor333
+                    {item.description}
                 </Text>
             </Fragment>
         )
@@ -31,14 +27,14 @@ export default function OrderItem({ index }) {
                     <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
                         <Content />
 
-                        <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }} onPress={() => Linking.openURL('tel:+998901112233')}>
+                        <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }} onPress={() => Linking.openURL(`tel:${item.phone}`)}>
                             <Icon size={30} color="#34a853" name="call" style={{ width: 45 }} />
-                            <Text style={{ color: '#209cee', fontSize: 17 }}>+998901112233</Text>
+                            <Text style={{ color: '#209cee', fontSize: 17 }}>{item.phone}</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }} onPress={() => Linking.openURL('https://t.me/unde_fined')}>
+                        <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }} onPress={() => Linking.openURL(`https://t.me/${item.telegram}`)}>
                             <Icon size={30} color="#0182c2" name="send" style={{ width: 45 }} />
-                            <Text style={{ color: '#209cee', fontSize: 17 }}>@unde_fined</Text>
+                            <Text style={{ color: '#209cee', fontSize: 17 }}>@{item.telegram}</Text>
                         </TouchableOpacity>
                     </View>
                 </BottomModal>

@@ -35,7 +35,7 @@ export default function JobItem({ item }) {
 
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                         {tags.map((tag, index) => (
-                            <View style={{ ...styles.tagContainer, backgroundColor: colors[index] }}>
+                            <View key={tag} style={{ ...styles.tagContainer, backgroundColor: colors[index] }}>
                                 <Text style={styles.tag}>{tag}</Text>
                             </View>
                         ))}
