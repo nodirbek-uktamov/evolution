@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Image, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -10,7 +10,6 @@ import CoursesTab from '../components/CoursesTab'
 export default function AcademyDetail({ route }) {
     const { item: academy } = route.params
     const detail = useLoad({ url: ACADEMY_DETAIL.replace('{id}', academy.id) })
-    console.log(academy)
     const detailInfo = detail.response?.data?.attributes || {}
     const courses = detailInfo?.courses?.data || []
     const telegram = academy.attributes.telegram.replace('@', '')

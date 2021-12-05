@@ -22,7 +22,7 @@ const courseColors = [
     ['#441DFC', '#4E81EB'],
     ['#209cee', '#1f99eb'],
     ['#A770EF', '#FDB99B'],
-    ['#13DEA0', '#06B782'],
+    // ['#13DEA0', '#06B782'],
 ]
 
 export function choiceLinear(index, reversed = false, course = false) {

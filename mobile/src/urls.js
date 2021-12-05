@@ -28,3 +28,5 @@ export const SOFT_SKILLS_COURSES_LIST = '/categories/5?populate=*'
 
 export const ACADEMIES_IN_YOUR_CITY_LIST = '/academies?filters[adress][$eq]=Бухара'
 export const OFFLINE_COURSES_LIST = '/courses?filters[offline][$eq]=true'
+
+export const JOBS_LIST = '/jobs'
